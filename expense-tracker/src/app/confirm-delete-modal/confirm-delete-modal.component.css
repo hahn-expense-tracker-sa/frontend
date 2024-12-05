@@ -1,0 +1,48 @@
+/* Modal background */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: none; /* Hide the modal by default */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 9999; /* Ensure modal appears on top of other elements */
+  }
+  
+  /* Modal content box */
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px; /* Adjust width as needed */
+    text-align: center;
+    max-width: 90%; /* Ensure it doesn’t overflow on small screens */
+  }
+  
+  /* Button styles */
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green for 'Yes' button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button:nth-child(2) {
+    background-color: #f44336; /* Red for 'Cancel' button */
+  }
+  
+  button:nth-child(2):hover {
+    background-color: #d32f2f;
+  }
+  

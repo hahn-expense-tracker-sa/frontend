@@ -31,9 +31,18 @@ export interface Expenses {
     budget: number;
     remainingBudget: number;
 }
-
+export interface Category {
+    id?: number;
+    name: string;
+    expenses?: Expense[];
+}
 export interface PaginationParams {
    [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>;
    page: number;
    perPage: number;
+}
+export interface Budget {   
+    id?: number;
+    amount: number;
+    month:Date;
 }

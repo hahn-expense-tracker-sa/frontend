@@ -4,8 +4,20 @@
 <ul>
   <li *ngFor="let expense of expenses">
     <strong>{{ expense.name }}</strong><br>
-    Amount: ${{ expense.amount }}<br>
-    Category: {{ expense.categoryId }}<br>
-    Date: {{ expense.date  }}<br>
+    Amount : {{ expense.amount }} $<br>
+    Category : {{ expense.categoryId }}<br>
+    Date : {{ expense.date | date:'dd/MM/yyyy' }}<br>
+    
+    <!-- Delete Button -->
+    <button class="btn btn-danger" (click)="openDeleteConfirmation(expense.id)">Delete</button>
   </li>
 </ul>
+
+<!-- Create New Expense Button -->
+<button class="btn btn-primary" (click)="navigateToCreateExpense()">Create New Expense</button>
+
+<!-- Confirmation Modal -->
+<app-confirm-delete-modal 
+  (deleteConfirmed)="deleteExpense(deleteExpenseId)" 
+  (deleteCancelled)="cancelDelete()">
+</app-confirm-delete-modal>

@@ -1,0 +1,18 @@
+/* Footer Styles */
+footer {
+    background-color: #34495e;  /* A softer, darker gray-blue */
+    color: #ecf0f1;  /* Light text */
+    padding: 15px 20px;  /* Padding for spacing */
+    text-align: center;  /* Center the text */
+    font-size: 14px;  /* Smaller font for the footer */
+    font-weight: 400;  /* Normal weight for footer text */
+    position: relative;  /* Relative positioning for layout */
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+  }
+  
+  footer p {
+    margin: 0;  /* Remove default margin */
+  }
+  

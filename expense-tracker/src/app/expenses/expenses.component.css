@@ -77,4 +77,42 @@ h1 {
       max-width: 350px;
     }
   }
+
+button {
+  color: white; /* White text */
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Center button */
+  display: block; /* Make it a block-level element */
+  text-align: center;
+}
+.btn-primary{
+  background-color: #4CAF50;
+}
+.btn-danger{
+  background-color: #367ff4;
+}
+.btn-danger:hover {
+  background-color: #d4272a;
+}
+button:hover {
+  transform: translateY(-2px); /* Lift effect */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Focus shadow */
+}
+
+button:disabled {
+  background-color: #ddd; /* Light gray for disabled button */
+  cursor: not-allowed;
+}
+
   

@@ -1,8 +1,35 @@
-.wrapper{
-    height: auto;
-    padding: 20px;
-    width: 100%;
-    flex-grow: 1;
-    box-sizing: border-box;
-
-}
+/* Wrapper styles for the main content */
+.wrapper {
+    margin: 20px auto; 
+    max-width: 1200px; 
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    min-height: calc(100vh - 160px); 
+  }
+  /* For smaller screens (responsive design) */
+@media (max-width: 768px) {
+    .wrapper {
+      padding: 15px;
+      margin: 10px;
+    }
+  
+    header {
+      font-size: 22px;  /* Smaller font size in header */
+    }
+  
+    footer {
+      font-size: 12px;  /* Smaller font size in footer */
+    }
+  
+    .wrapper h1 {
+      font-size: 26px;  /* Adjust title font size for smaller screens */
+    }
+  
+    header nav a {
+      font-size: 14px;  /* Smaller navigation links */
+    }
+  }
+  
+  

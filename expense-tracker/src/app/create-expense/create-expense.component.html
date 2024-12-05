@@ -13,10 +13,17 @@
       </div>
   
       <div class="form-group">
-        <label for="category">Category:</label>
-        <select id="category" name="category" [(ngModel)]="expense.categoryId" required>
+        <label for="category">Category</label>
+        <select [(ngModel)]="expense.categoryId" name="categoryId" id="category" required>
           <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          <option value="new">Create New Category</option> <!-- Option to create a new category -->
         </select>
+      </div>
+    
+      <!-- If "Create New Category" is selected, show input to add a new category -->
+      <div *ngIf="expense.categoryId === 'new'">
+        <label for="newCategory">Category name</label>
+        <input type="text" id="newCategory" [(ngModel)]="newCategory" name="newCategory" required />
       </div>
   
       <div class="form-group">
