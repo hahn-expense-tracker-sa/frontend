@@ -1,0 +1,30 @@
+<div class="create-expense-container">
+    <h2>Create a New Expense</h2>
+  
+    <form (ngSubmit)="onSubmit()" #expenseForm="ngForm">
+      <div class="form-group">
+        <label for="name">Expense Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="expense.name" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" [(ngModel)]="expense.amount" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <select id="category" name="category" [(ngModel)]="expense.categoryId" required>
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" [(ngModel)]="expense.date" required>
+      </div>
+  
+      <button type="submit" [disabled]="!expenseForm.form.valid">Submit</button>
+    </form>
+  </div>
+  
