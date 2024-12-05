@@ -1,0 +1,80 @@
+/* Header style */
+h1 {
+    text-align: center;
+    margin: 30px 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: #333;
+    letter-spacing: 1px;
+  }
+  
+  /* The list container */
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;  /* Even space between items */
+    padding: 0;
+    margin: 0;
+    gap: 15px;  /* Reduce gap between items */
+    list-style-type: none;
+  }
+  
+  /* Each expense card */
+  li {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;  /* Decreased the width to make the cards more compact */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for card */
+  li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Expense name */
+  strong {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #4CAF50;  /* Green color for the name */
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Amount styling */
+  .amount {
+    font-size: 1.6em;
+    color: #E91E63;  /* Pink color for the amount */
+    font-weight: bold;
+    margin: 15px 0;
+  }
+  
+  /* Category and Date styling */
+  .category, .date {
+    font-size: 0.95em;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  
+  /* Date formatting */
+  .date {
+    font-style: italic;
+  }
+  
+  /* Responsive styling: Stack cards on small screens */
+  @media (max-width: 768px) {
+    ul {
+      justify-content: center;
+    }
+    li {
+      width: 100%;  /* Full width on small screens */
+      max-width: 350px;
+    }
+  }
+  

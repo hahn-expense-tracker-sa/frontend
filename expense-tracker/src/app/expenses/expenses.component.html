@@ -1,1 +1,11 @@
 <h1>Expenses</h1>
+
+<!-- Display expenses in a simple list -->
+<ul>
+  <li *ngFor="let expense of expenses">
+    <strong>{{ expense.name }}</strong><br>
+    Amount: ${{ expense.amount }}<br>
+    Category: {{ expense.categoryId }}<br>
+    Date: {{ expense.date  }}<br>
+  </li>
+</ul>
