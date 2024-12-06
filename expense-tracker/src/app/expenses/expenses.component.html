@@ -44,11 +44,11 @@
 <!-- Create New Expense Button -->
 <button class="btn btn-primary" (click)="navigateToCreateExpense()">Create New Expense</button>
 
-<!-- CanvasJS Pie Chart showing expenses by category -->
-<div class="chart-container">
-  <canvasjs-chart [options]="chartOptions" style="height: 400px; width: 100%;"></canvasjs-chart>
-</div>
+<!-- displaying a chart -->
 
+<div style="display: block;">
+  <canvas id="expenseChart"></canvas>
+</div>
 
 
 <!-- Confirmation Modal -->

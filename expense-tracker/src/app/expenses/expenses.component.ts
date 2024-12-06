@@ -8,9 +8,12 @@ import { ConfirmDeleteModalComponent } from '../confirm-delete-modal/confirm-del
 import { FormsModule } from '@angular/forms';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { ChangeDetectorRef } from '@angular/core';
+import { ArcElement, Chart, Legend, Title, Tooltip } from 'chart.js';
+import { PieController } from 'chart.js';
 
 @Component({
   selector: 'app-expense',
+  standalone: true,
   imports: [CommonModule, ConfirmDeleteModalComponent, FormsModule, CanvasJSAngularChartsModule ],
   templateUrl: './expenses.component.html',
   styleUrls: ['./expenses.component.css'],
@@ -24,7 +27,7 @@ export class ExpensesComponent implements OnInit {
   totalExpenses: number = 0;  
   progressBarWidth: number = 0;  
 
-  chartOptions: any;
+  chart: any;
 
 
   constructor(
@@ -82,40 +85,78 @@ export class ExpensesComponent implements OnInit {
 // Update the pie chart with expenses grouped by category
 updatePieChartData(): void {
   this.expensesService.getExpensesByCategory('http://localhost:5244/api/Expenses/getByCategory').subscribe((categoryData: categoryGroup[]) => {
-    console.log('Category Data:', categoryData);  // Check if categoryData is correct
+    console.log('Category Data:', categoryData);  // Verify data is correctly passed
 
     if (categoryData && categoryData.length > 0) {
-      // Initialize chartOptions with correct structure
-      this.chartOptions = {
-        animationEnabled: true,
-        exportEnabled: true,
-        theme: "dark2",
-        title: {
-          text: "Expenses by Category"
+      const dataPoints = categoryData.map((item: categoryGroup) => ({
+        label: item.categoryName,
+        data: item.totalAmount
+      }));
+
+      console.log('Data Points:', dataPoints); // Log the data points for validation
+
+      // Register Chart.js components
+      Chart.register(PieController);
+      Chart.register(ArcElement);
+      Chart.register(Title);
+      Chart.register(Tooltip);
+      Chart.register(Legend);
+
+      // Check if chart already exists, destroy it if needed
+      if (this.chart) {
+        this.chart.destroy(); // Destroy the previous chart instance
+      }
+
+      // Create the chart
+      this.chart = new Chart('expenseChart', {
+        type: 'pie',
+        data: {
+          labels: dataPoints.map(dp => dp.label),
+          datasets: [{
+            data: dataPoints.map(dp => dp.data),
+            backgroundColor: [
+              '#81C784', '#64B5F6', '#FFB74D', '#BA68C8', '#FF8A80', '#FFEB3B'
+            ],
+            borderColor: [
+              '#66BB6A', '#42A5F5', '#FF9800', '#9C27B0', '#D32F2F', '#FBC02D'
+            ],
+            borderWidth: 1
+          }]
         },
-        data: [{
-          type: "pie",
-          startAngle: 240,
-          showInLegend: true,
-          toolTipContent: "{name}: {y} $",
-          indexLabel: "{name} - {y} $",
-          dataPoints: categoryData.map((item: categoryGroup) => ({
-            name: item.categoryName,   // Category name
-            y: item.totalAmount       // Total amount for the category
-          }))
-        }]
-      };
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: function(tooltipItem) {
+                  const categoryName = tooltipItem.label;
+                  const amount = tooltipItem.raw;
+                  return `${categoryName}: $${(amount as number).toFixed(2)}`;
+                }
+              }
+            },
+            title: {
+              display: true,
+              text: 'Expenses by Category'
+            }
+          }
+        }
+      });
 
-      console.log('Chart Options:', this.chartOptions);  // Log the entire chart options object
-      console.log('Data Points:', this.chartOptions.data[0].dataPoints);  // Log the data points to make sure they are being correctly mapped
-
-      // Trigger change detection if necessary
+      console.log('Chart Data:', this.chart.data);
       this.cdRef.detectChanges();
     } else {
       console.error('No category data available.');
     }
   });
 }
+
+
+
+
 
 
 
