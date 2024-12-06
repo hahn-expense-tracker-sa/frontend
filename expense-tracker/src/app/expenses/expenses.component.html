@@ -1,8 +1,6 @@
-<h1>Expenses</h1>
-
 <!-- Set or Update Monthly Budget Form -->
 <div class="budget-container">
-  <h3>Set Your Monthly Budget</h3>
+  <h3>Set or Update Your Monthly Budget</h3>
   <form (ngSubmit)="setMonthlyBudget()">
     <input 
       type="number" 
@@ -10,7 +8,7 @@
       name="monthlyBudget" 
       placeholder="Enter your budget" 
       required />
-    <button type="submit">Set Budget</button>
+    <button type="submit">Update Budget</button>
   </form>
 </div>
 
@@ -28,8 +26,9 @@
     </div>
   </div>
 </div>
-<div style="height: 30px;"></div>
-<!-- Display expenses in a simple list -->
+
+<!-- Expenses List -->
+<h1>Expenses</h1>
 <ul>
   <li *ngFor="let expense of expenses">
     <strong>{{ expense.name }}</strong><br>
