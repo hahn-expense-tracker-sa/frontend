@@ -244,3 +244,16 @@ button:disabled {
   background-color: #ddd; /* Light gray for disabled button */
   cursor: not-allowed;
 }
+
+canvas {
+  max-width: 100% !important; 
+  height: 400px !important;   
+  display: block !important;  
+  margin: 0 auto;             
+}
+.chart-container {
+  min-height: 300px;
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+}

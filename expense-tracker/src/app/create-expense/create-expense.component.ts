@@ -51,6 +51,7 @@ export class CreateExpenseComponent {
     this.expensesService.addExpense('http://localhost:5244/api/Expenses', this.expense).subscribe((response) => {
       console.log('Expense created:', response);
       this.router.navigateByUrl('/expenses');  // Use navigateByUrl() for clarity
+       // Update the pie chart data
     });    
   }
 

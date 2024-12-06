@@ -46,3 +46,7 @@ export interface Budget {
     amount: number;
     month:Date;
 }
+export interface categoryGroup {
+    categoryName: string;
+    totalAmount: number;
+}
